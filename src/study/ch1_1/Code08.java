@@ -1,4 +1,4 @@
-package study.ch1;
+package study.ch1_1;
 
 public class Code08 {
 	public static void main(String[] args) {
