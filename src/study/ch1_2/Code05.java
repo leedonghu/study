@@ -23,7 +23,7 @@ public class Code05 {
 			
 			while(inFile.hasNext()) { //file의 크기를 모르기 때문에 while문 사용
 				name[n] = inFile.next();
-				number[n] = inFile.next();
+				number[n] = inFile.next(); //Exception in thread "main" java.util.InputMismatchException 발생, int의 범위를 넘어서는 숫자 존해하기 때문
 				n++;
 			}
 			
