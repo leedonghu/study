@@ -5,10 +5,10 @@ import java.util.Scanner;
 import study.ch2_2.Polynomial2;
 
 public class Code02 {
-	static Polynomial2[] polys = new Polynomial2[100]; //다항식 보관 자료구조
-	static int n = 0; //저장된 다항식 갯수
+	 Polynomial2[] polys = new Polynomial2[100]; //다항식 보관 자료구조
+	 int n = 0; //저장된 다항식 갯수
 	
-	public static void main(String[] args) {
+	public  void processCommand() {
 		Scanner sc = new Scanner(System.in);
 		while(true) {
 			System.out.println("$ ");
@@ -64,12 +64,19 @@ public class Code02 {
 		
 		sc.close();
 	}
-	private static int find(char name) {
+	
+	
+	private int find(char name) {
 		for(int i=0; i<n; i++) {
 			if(polys[i].name == name) {
 				return i;
 			}
 		}
 		return -1;
+	}
+	
+	public static void main(String[] args) {
+		Code02 app = new Code02();
+		app.processCommand();
 	}
 }
