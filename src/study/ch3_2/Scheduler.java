@@ -1,5 +1,6 @@
 package study.ch3_2;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Scheduler {
@@ -41,15 +42,30 @@ public class Scheduler {
 				handleList();
 				
 			}else if(command.equals("show")) {
+				handleShow();
 				
-				
-			}else if(command.equals("exit")) {
+			}else if(command.equals("sort")) {
+				Arrays.sort(events, 0, n);
+			}
+			else if(command.equals("exit")) {
 				break;
 			}
 		}
 		kb.close();
 	}
 	
+	private void handleShow() {
+		String dateString = kb.next();
+		MyDate theDate = paresDateString(dateString);
+		
+		for(int i=0; i<n; i++) {
+			if(events[i].isRelevant(theDate)) { //event 클래스를 추상 클래스로 만듬
+				System.out.println(events[i].toString());
+			}
+		}
+		
+	}
+
 	private void handleList() {
 		for(int i=0; i<n; i++) {
 			System.out.println("   " + events[i].toString());
@@ -57,7 +73,7 @@ public class Scheduler {
 		
 	}
 	
-	private void addEvent(OnedayEvent ev) {
+	private void addEvent(Event ev) {
 		if(n >= capacity) {
 			reallocate();
 		}
@@ -80,7 +96,21 @@ public class Scheduler {
 	}
 
 	private void handleAddDurationEvent() {
-		// TODO Auto-generated method stub
+		System.out.print("   begin: ");
+		String begin = kb.next(); //2021/5/17
+		MyDate date = paresDateString(begin);
+		
+		System.out.print("   end: ");
+		String end = kb.next();
+		MyDate date2 = paresDateString(end);
+		
+		System.out.print("   title: ");
+		String title = kb.next();
+		
+		DurationEvent dv = new DurationEvent(title, date, date2);
+		System.out.println(dv.toString());
+		events[n] = dv; //다형성
+		n++;
 		
 	}
 

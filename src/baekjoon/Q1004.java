@@ -43,6 +43,7 @@ public class Q1004 {
 		}
 		System.out.println(sb);
 		
+		
 	}
 
 	private static int countMeetingPoint(int x1, int y1, int x2, int y2, int[][] planet) {
@@ -70,4 +71,6 @@ public class Q1004 {
 		}
 		return count;
 	}
+	
+
 }

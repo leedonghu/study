@@ -12,4 +12,12 @@ public class DeadlineEvent extends Event {
 	public String toString() {
 		return title + ", " + deadline.toString();
 	}
+	
+	public boolean isRelevant(MyDate date) {
+		return deadline.compareTo(date) >=0;
+	}
+	
+	public MyDate getRepresentativeDate() {
+		return deadline;
+	}
 }
