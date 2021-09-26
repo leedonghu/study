@@ -9,12 +9,12 @@ public class Homework02 {
 		int[] leave = {2,1,3,4};
 		for(int i=0; i<enter.length; i++) {
 			
-			System.out.println(solution(enter, leave )[i]);
+			System.out.println(solution(enter, leave).get(i));
 		}
 	}
 	
-	static int[] solution(int[] enter, int[] leave) {
-		List<Integer> list = new ArrayList<>();
+	static List<Integer> solution(int[] enter, int[] leave) {
+		List<Integer> list = new ArrayList<Integer>();
 		int[] answer = new int[enter.length];
 		
 		for(int i=0; i<enter.length; i++) {
@@ -27,16 +27,24 @@ public class Homework02 {
 					list.add(enter[j]);
 					
 				}else {
-					list.remove(list.indexOf(leave[i]));
-					answer[leave[i]-1] += list.size();
-					for(int k=0; k<list.size(); k++) {
-						answer[list.get(k) -1]++;
+					if(list.size()>0) {
+						
+						answer[list.get(j-1)-1] += list.size() -1;
+						list.remove(j-1);
+						for(int k=0; k<list.size(); k++) {
+							answer[list.get(k) - 1] += 1;
+						}
+						break;
 					}
-					break;
 				}
+//				continue;
 			}
+			//break;
 			
 		}
-		return answer;
+		for(int m=0; m<answer.length; m++) {
+			System.out.println("answer:" + answer[m]);
+		}
+		return list;
 	}
 }
