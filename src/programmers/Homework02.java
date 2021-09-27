@@ -27,19 +27,24 @@ public class Homework02 {
 					list.add(enter[j]);
 					
 				}else {
-					if(list.size()>0) {
+					if(j>0) {
 						
 						answer[list.get(j-1)-1] += list.size() -1;
-						list.remove(j-1);
+						
+						
+						
 						for(int k=0; k<list.size(); k++) {
-							answer[list.get(k) - 1] += 1;
+//							answer[list.get(k) - 1] += 1;
+							list.remove(k);
 						}
-						break;
+
+//						break;
 					}
+//					break;
 				}
-//				continue;
+//				break;
 			}
-			//break;
+			break;
 			
 		}
 		for(int m=0; m<answer.length; m++) {
