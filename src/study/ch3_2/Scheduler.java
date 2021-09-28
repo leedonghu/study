@@ -1,6 +1,8 @@
 package study.ch3_2;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Scheduler {
@@ -16,9 +18,10 @@ public class Scheduler {
 	//각 칸에 OnedayEvent,DurationEvent,DeadlineEvent가 들어갈 수 있음
 	//다형성 
 	//다른타입의 객체들을 같은 배열에 넣을 수 있음
-	private int capacity = 10;
-	public Event[] events = new Event[capacity]; //배열 재할당 배열크기늘림
-	int n =0;
+//	private int capacity = 10;
+	public ArrayList<Event> events = new ArrayList<>();
+//	public Event[] events = new Event[capacity]; //배열 재할당 배열크기늘림
+//	int n =0;
 	private Scanner kb;
 	
 	
@@ -45,7 +48,7 @@ public class Scheduler {
 				handleShow();
 				
 			}else if(command.equals("sort")) {
-				Arrays.sort(events, 0, n);
+				Collections.sort(events);
 			}
 			else if(command.equals("exit")) {
 				break;
@@ -58,37 +61,36 @@ public class Scheduler {
 		String dateString = kb.next();
 		MyDate theDate = paresDateString(dateString);
 		
-		for(int i=0; i<n; i++) {
-			if(events[i].isRelevant(theDate)) { //event 클래스를 추상 클래스로 만듬
-				System.out.println(events[i].toString());
+		for(Event ev : events) {
+			if(ev.isRelevant(theDate)) { //event 클래스를 추상 클래스로 만듬
+				System.out.println(ev.toString());
 			}
 		}
 		
 	}
 
 	private void handleList() {
-		for(int i=0; i<n; i++) {
-			System.out.println("   " + events[i].toString());
+		for(Event ev: events) {
+			System.out.println("  " + ev.toString());
 		}
 		
 	}
 	
 	private void addEvent(Event ev) {
-		if(n >= capacity) {
-			reallocate();
-		}
-		events[n++] = ev;
+//		if(n >= capacity) {
+//			reallocate();
+		events.add(ev);
 	}
 
-	private void reallocate() {
-		Event[] tmp = new Event[capacity * 2];
-		for(int i=0; i<n; i++) {
-			tmp[i] = events[i];
-		}
-		events = tmp;
-		capacity *=2;
-		
-	}
+//	private void reallocate() {
+//		Event[] tmp = new Event[capacity * 2];
+//		for(int i=0; i<n; i++) {
+//			tmp[i] = events[i];
+//		}
+//		events = tmp;
+//		capacity *=2;
+//		
+//	}
 
 	private void handleAddDeadlineEvent() {
 		// TODO Auto-generated method stub
@@ -109,8 +111,8 @@ public class Scheduler {
 		
 		DurationEvent dv = new DurationEvent(title, date, date2);
 		System.out.println(dv.toString());
-		events[n] = dv; //다형성
-		n++;
+		events.add(dv); //다형성
+
 		
 	}
 
@@ -125,8 +127,7 @@ public class Scheduler {
 		
 		OnedayEvent ov = new OnedayEvent(title, date);
 		System.out.println(ov.toString());
-		events[n] = ov; //다형성
-		n++;
+		events.add(ov);
 		
 	}
 
