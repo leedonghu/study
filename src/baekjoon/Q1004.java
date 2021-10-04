@@ -36,9 +36,9 @@ public class Q1004 {
 				planet[m][2] = r;
 				m++;
 			}
-		
+			m = 0;
 			sb.append(countMeetingPoint(x1,y1,x2,y2,planet)).append("\n");
-			System.out.println("n: " +n);
+			
 			n++;
 		}
 		System.out.println(sb);
@@ -52,19 +52,19 @@ public class Q1004 {
 			
 				if((Math.pow(x1-planet[i][0], 2) + Math.pow(y1-planet[i][1], 2))< Math.pow(planet[i][2], 2) 
 						&& (Math.pow(x2-planet[i][0], 2) + Math.pow(y2-planet[i][1], 2))< Math.pow(planet[i][2], 2)) {
-					System.out.println("case1");
+					
 					
 				}else if((Math.pow(x1-planet[i][0], 2) + Math.pow(y1-planet[i][1], 2))> Math.pow(planet[i][2], 2) 
 						&&(Math.pow(x2-planet[i][0], 2) + Math.pow(y2-planet[i][1], 2))> Math.pow(planet[i][2], 2)) {
-					System.out.println("case2");
+					
 					
 				}else if(Math.pow(x1-planet[i][0], 2)+Math.pow(y1-planet[i][1], 2) < Math.pow(planet[i][2], 2) 
 						|| Math.pow(x2-planet[i][0], 2)+Math.pow(y2-planet[i][1], 2) < Math.pow(planet[i][2], 2)){
-					System.out.println("case3");
+					
 					count++;
 					
 				}else {
-					System.out.println("case4");
+					
 					
 				}
 			
