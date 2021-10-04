@@ -21,4 +21,6 @@ public class Code01 {
 		p1.set("Even", 9);
 		System.out.println(p1.get());
 	}
+	
+
 }
