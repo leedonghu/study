@@ -27,7 +27,7 @@ public class Polynomial {
 			if(p.data.coef == 0) {
 				//remove node 계수가 0이면 항 삭제
 				if(q == null) {
-					terms.removeFirst();
+//					terms.removeFirst();
 				}else {
 					
 					terms.removeAfter(q);
@@ -36,7 +36,7 @@ public class Polynomial {
 		}else {//지수가 더 작을때 뒤에 추가
 			Term t = new Term(coef, expo);
 			if(q == null) {
-				terms.addFirst(t);
+//				terms.addFirst(t);
 			}else {
 				
 				terms.addAfter(q, t);
