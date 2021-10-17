@@ -4,32 +4,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Q1110 {
+public class Q8958 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
+		StringBuilder sb = new StringBuilder();
 		
 		int n = Integer.parseInt(br.readLine());
-		int first = n;
-		int cnt = 0;
 		
-		
-		do{
-			if(n < 10) {
-				n = (10*n)+n;
-				
-				cnt++;
-			}else {
-				
-				int calc = n/10 + n%10;
-				
-				n = (n%10)*10 + calc%10;
-				cnt++;
-			}
-				
+		for(int i=0; i<n; i++) {
+			String ox = br.readLine();
+			int[] score = new int[ox.length()];
 			
-		} while(n != first);
-		
-		System.out.println(cnt);
+			for(int j=0; j<score.length; j++) {
+				
+			}
+		}
 	}
 }
