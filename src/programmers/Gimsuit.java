@@ -6,52 +6,65 @@ import java.util.List;
 
 public class Gimsuit {
 	public static void main(String[] args) {
-		int n =10;
-		int[] lost = {2,4,7,8};
+		int n =5;
+		int[] lost = {2,4};
 		int[] reserve = {1,3,5};		
 		
 		System.out.println(solution(n, lost, reserve));
 	}
 	
 	public static int solution(int n, int[] lost, int[] reserve) {
-		int answer = 0;
-		Arrays.sort(lost);
-		Arrays.sort(reserve);
-		int[] ok = new int[n];
-		for(int i=0; i<n; i++) {
-			ok[i] = 1;
+		int[] arr = new int[n];
+		
+		for(int i=0; i<=n-1; i++) {
+			arr[i] = 1;
 		}
-
+		
+		for(int i=0; i<reserve.length; i++) {
+			arr[reserve[i]-1] = 2;
+		}
+		
 		for(int i=0; i<lost.length; i++) {
-			for(int j=i; j<reserve.length; j++) { //j의 시작을 i부터 함으로써 중복제거
-				if(lost[i] -1 == reserve[j]) {
-					System.out.println(lost[i] + "break");
+			
+			for(int j=0; j<reserve.length; j++) {
+				if(lost[i] == reserve[j]) {
+					arr[lost[i]-1] = 1;
 					break;
+				}else {
 					
-				}else if(lost[i]+1 == reserve[j]) {
-					System.out.println(lost[i]);
-					break;
-				}else if(lost[i] == reserve[j]) {
-					System.out.println(lost[i]);
-					break;
+					arr[lost[i]-1] = 0;
 				}
-				else {
-					System.out.println(lost[i]);
-					ok[lost[i] -1] = 0;
-					
-				}
-				
+			}
+			
+		}
+		
+
+		
+		for(int i=0; i<arr.length-1; i++) {
+			
+			if(arr[i]== 0 && arr[i+1] == 2) {
+				arr[i] = 1;
+				arr[i+1] = 1;
+			}
+			
+		}
+		
+		for(int i=arr.length-1; i>0; i--) {
+			if(arr[i] == 0 && arr[i-1] == 2) {
+				arr[i] = 1;
+				arr[i-1] = 1;
 			}
 		}
 		
-		for(int i=0; i<n; i++) {
-			System.out.println("ok["+i+"]:"+ok[i]);
-			answer += ok[i];
+		int cnt = 0;
+		for(int i=0; i<arr.length; i++) {
+			if(arr[i] != 0) {
+				cnt++;
+			}
+			System.out.println(arr[i]);
 		}
 		
 		
-		
-
-		return answer;
+		return cnt;
 	}
 }
