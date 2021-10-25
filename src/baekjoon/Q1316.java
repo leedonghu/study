@@ -14,7 +14,7 @@ public class Q1316 {
 			String str = br.readLine();
 			
 			for(int j=0; i<str.length(); j++) {
-				for(int k=j+1; k<str.length()-(j+1); k++) {
+				if(str.charAt(j) == str.charAt(j+1)) {
 					
 				}
 			}
