@@ -7,8 +7,8 @@ import java.util.List;
 public class Gimsuit {
 	public static void main(String[] args) {
 		int n =5;
-		int[] lost = {2,4};
-		int[] reserve = {1,3,5};		
+		int[] lost = {2,5};
+		int[] reserve = {1,3,4};		
 		
 		System.out.println(solution(n, lost, reserve));
 	}
@@ -47,6 +47,11 @@ public class Gimsuit {
 				arr[i+1] = 1;
 			}
 			
+		}
+		
+		if(arr[n-2] == 2 && arr[n-1] == 0) {
+			arr[n-2] = 1;
+			arr[n-1] = 1;
 		}
 		
 		for(int i=arr.length-1; i>0; i--) {
