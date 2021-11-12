@@ -24,6 +24,32 @@ public class BinarySearch {
 		return -1;  // 검색 실패
 	}
 	
+	static int binSearchX(int[] a, int n, int key) {
+		int pl = 0;
+		int pr = n-1;
+		
+		do {
+			int pc = (pl + pr) / 2;
+			
+			if(a[pc] == key) {
+				int pc1 = pc;
+				
+				do {
+					
+					pc1--;
+				}while(a[pc1] == key);
+				
+				return pc1+1;
+			}else if(a[pc] < key) {
+				pl = pc + 1;
+			}else {
+				pr = pc - 1;
+			}
+		}while(pl <= pr); 
+		
+		return -1;
+	}
+	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -46,7 +72,7 @@ public class BinarySearch {
 		System.out.print("검색할 값: ");
 		int key = Integer.parseInt(br.readLine());
 		
-		int idx = binSearch(x, num, key);
+		int idx = binSearchX(x, num, key);
 		
 		if(idx == -1) {
 			System.out.println("그 값의 요소가 없습니다.");
