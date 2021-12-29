@@ -9,13 +9,15 @@ public class InsertionSort {
 	static void insertionSort(int[] a, int n) {
 		//i 가 0일때는 2번째 for문이 돌지 않음
 		
-		for(int i=0; i<n; i++) {
+		for(int i=1; i<n; i++) { //배열의 2번째 요소부터 
 			int j;
-			int tmp = a[i];
-			for(j=i; j>0 && a[j-1] > tmp; j--) {
-				a[j] = a[j-1];
+			int tmp = a[i]; //정렬되지 않은 배열의 첫번째 요소
+			for(j=i; j>0 && a[j-1] > tmp; j--) { //이 전 요소의 값이 선택된 요소보다 크다면
+				a[j] = a[j-1]; //이전 값을 선택된 순서에 삽입 (이전 값들을 오른쪽으로 한칸씩 이동)
+				               //j를 감소시키면서 조건에 맞는 동안 반복
 			}
-			a[j] = tmp;
+			System.out.println("j :" +j);
+			a[j] = tmp; //선택된 값을 원하는 위치에 대입
 		}
 	}
 	
