@@ -16,7 +16,9 @@ public class Q9020 {
 			int n = Integer.parseInt(br.readLine());
 //			int[] answer = solution(n);
 //			sb.append(answer[0] + " " + answer[1]).append("\n");
-			int[] answer = solution02(n);
+//			int[] answer = solution02(n);
+//			sb.append(answer[0] + " " + answer[1]).append("\n");
+			int[] answer = solution03(n);
 			sb.append(answer[0] + " " + answer[1]).append("\n");
 			t++;
 		}
@@ -101,5 +103,35 @@ public class Q9020 {
 		
 		return answer;
 		
+	}
+	
+	public static int[] solution03(int n) {
+		int[] arr = new int[2];
+		int dev01 = n / 2; //차이가 가장 적은값을 구해야 함으로 n을 절반부터 시작
+		int dev02 = n - dev01;
+		
+		while(true) {
+			if(isPrime(dev01) && isPrime(dev02)) {
+				break;
+			}else {
+				dev01--;
+				dev02++;
+			}
+		}
+		arr[0] = dev01;
+		arr[1] = dev02;
+		return arr;
+		
+	}
+
+	private static boolean isPrime(int n) {
+		boolean check = true;
+		for(int i=2; i*i<=n; i++) {
+			if(n%i == 0) {
+				check = false;
+				break;
+			}
+		}
+		return check;
 	}
 }
