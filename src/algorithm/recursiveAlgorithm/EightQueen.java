@@ -7,8 +7,10 @@ public class EightQueen {
 	static int[] pos = new int[8]; //각 열의 퀸의 위치
 	
 	static void print() {
-		for(int i=0; i<8; i++) {
-			System.out.printf("%2d", pos[i]);
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++)
+				System.out.printf("%s", j == pos[i] ? "■" : "□");
+			System.out.println();
 		}
 		System.out.println();
 	}
