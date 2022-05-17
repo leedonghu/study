@@ -120,6 +120,25 @@ public class BubbleSort {
 		}
 	}
 	
+	static void test(int[]a, int n) {
+		for(int i=0; i<n-1; i++) {
+			
+			int test = 0;
+			System.out.println("r" +test);
+			for(int j = n-1; j>i; j--) {
+				if(a[j-1] > a[j]) {
+					swap(a,j-1,j);
+					test++;
+				}
+			}
+			System.out.println("s"+test);
+			if(test == 0) {
+				break;
+			}
+			
+		}
+	}
+	
 
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
@@ -143,7 +162,7 @@ public class BubbleSort {
 //		improvementBubbleSort(x, nx);  // 18번
 //		bubbleLeftSort(x, nx); //21번
 //		bubbleSort(x, nx); //21번
-		
+		test(x, nx);
 		System.out.println("오름차순으로 정렬했습니다.");
 		for(int i=0; i<nx; i++) {
 			System.out.println("x[" + i + "] =" + x[i]);
