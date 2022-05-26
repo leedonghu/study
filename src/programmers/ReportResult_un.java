@@ -1,6 +1,6 @@
 package programmers;
 
-public class ReportResult {
+public class ReportResult_un {
 	public static void main(String[] args) {
 		String[] id_list = {"muzi", "frodo", "apeach", "neo"};
 		String[] report = {"muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"};
