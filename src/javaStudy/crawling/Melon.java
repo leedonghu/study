@@ -22,7 +22,27 @@ public class Melon {
 			e.printStackTrace();
 		}
 		
-		Elements element = doc.select("tr.1st50");
+		Elements titles = doc.select("div.ellipsis.rank01>span>a");
+		Elements artists = doc.select("div.ellipsis.rank02>span");
+		Elements rankElement = doc.select("td>div.wrap.t_center>span.rank");
+		for(Element e : titles) {
+			String song = e.text();
+			System.out.println("제목: " + song);
+			System.out.println(song.length());
+		}
+		System.out.println("================================");
+		for(Element e : artists) {
+			String artist = e.text();
+			System.out.println("가수: " + artist);
+			System.out.println(artist.length());
+		}
+		
+		for(Element e : rankElement) {
+			String rank = e.text();
+			int iRank = Integer.parseInt(rank);
+			System.out.println("랭킹: " + iRank);
+			
+		}
 		
 		System.out.println("================================");
 		
