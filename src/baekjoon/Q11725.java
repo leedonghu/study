@@ -34,26 +34,28 @@ public class Q11725 {
 		}
 	}
 	
-//	static void bfs(int n) {
-//		q = new LinkedList<>();
-//		for(int[] a : list) {
-//			q.add(a);
-//		}
-//
-//		while(!q.isEmpty()) {
-//			int[] arr = q.peek();
-//			
-//			for(int i=0; i<node.length; i++) {
-//				System.out.println(i);
-//				if(arr[0] == n) {
-//					answer[node[i][1] - 1] = key;
-//					q.add(node[i][1]);
-//					
-//				}else if(arr[1] == n) {
-//					answer[node[i][0] - 1] = key;
-//					q.add(node[i][0]);
-//				}
-//			}
-//		}
-//	}
+	static void bfs(int n) {
+		q = new LinkedList<>();
+		Queue<Integer> q2 = new LinkedList<>();
+		q2.add(1);
+		for(int[] a : list) {
+			q.add(a);
+		}
+
+		while(!q.isEmpty()) {
+			int[] arr = q.peek();
+			int key = q2.poll();
+			for(int i=0; i<node.length; i++) {
+				System.out.println(i);
+				if(arr[0] == n) {
+					answer[node[i][1] - 1] = key;
+					q.add(node[i][1]);
+					
+				}else if(arr[1] == n) {
+					answer[node[i][0] - 1] = key;
+					q.add(node[i][0]);
+				}
+			}
+		}
+	}
 }
