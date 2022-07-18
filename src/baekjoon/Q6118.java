@@ -3,6 +3,8 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Q6118 {
@@ -12,6 +14,7 @@ public class Q6118 {
 	static int cnt = 0;
 	static int n;
 	static int m;
+	static Queue<int[]> q;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
@@ -29,18 +32,16 @@ public class Q6118 {
 			map[b][a] = 1;
 		}
 		
-		for(int i=1; i<n; i++) {
-			dfs(i);
-		}
+		
 	}
 	
-	static void dfs(int x) {
-		check[x] = true;
+	static void bfs() {
+		q = new LinkedList<>();
+		check[1] = true;
+		q.add(new int[] {1, 0});
 		
-		for(int i=1; i<n; i++) {
-			if(!check[i] && map[x][i] == 1) {
-				dfs(i);
-			}
+		while(!q.isEmpty()) {
+			
 		}
 	}
 }

@@ -13,7 +13,7 @@ public class Q11725 {
 	static int[][] node;
 	static int[] answer;
 	static Queue<int[]> q;
-	static List<int[]> list;
+	static List<int[][]> list;
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

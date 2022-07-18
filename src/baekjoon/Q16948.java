@@ -37,7 +37,7 @@ public class Q16948 {
 		q = new LinkedList<>();
 		check[x1][y1] = true;
 		q.add(new int[] {x1,y1,0});
-		int cnt = 0;
+		
 		while(!q.isEmpty()) {
 			int[] a = q.poll();
 			
