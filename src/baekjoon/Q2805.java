@@ -21,13 +21,13 @@ public class Q2805 {
 		
 		Arrays.sort(tree);
 		
-		int rc = tree[n-1];
-		int lc = 0;
-		int answer = 0;
+		int max = tree[n-1];
+		int min = 0;
 		
-		while(lc < rc) {
+		
+		while(min < max) {
 			
-			int mid = (rc+lc)/2;
+			int mid = (min+max)/2;
 			
 			long sum = 0;
 			for(int i=0; i<n; i++) {
@@ -36,18 +36,15 @@ public class Q2805 {
 				}
 			}
 			
-			if(sum == k) {
-				answer = mid;
-				break;
-			}else if(sum > k) {
-				lc = mid + 1;
-			}else if(sum < k) {
-				rc = mid -1;
+			if(sum<k) {
+				max= mid;
+			}else {
+				min  = mid + 1;
 			}
 			
 			
 		}
 		
-		System.out.println(answer);
+		System.out.println(min-1);
 	}
 }
