@@ -3,6 +3,7 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -12,50 +13,51 @@ public class Q11725 {
 	
 	static int[][] node;
 	static int[] answer;
-	static Queue<int[]> q;
-	static List<int[][]> list;
+	static Queue<Integer> q;
+	static List<List<Integer>> list;
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
 		
-		answer = new int[n];
+		answer = new int[n+1];
+		list = new ArrayList<>();
+		for(int i=0; i<=n ;i++) {
+			list.add(new ArrayList<>());
+		}
 		for(int i=0; i<n-1; i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			int a = Integer.parseInt(st.nextToken());
 			int b = Integer.parseInt(st.nextToken());
 			
-			list.add(new int[] {a, b});
+			list.get(a).add(b);
+			list.get(b).add(a);
 		}
 		
-//		bfs(1);
-		for(int i=1; i<answer.length; i++) {
-			System.out.println(answer[i]);
-		}
-	}
-	
-	static void bfs(int n) {
 		q = new LinkedList<>();
-		Queue<Integer> q2 = new LinkedList<>();
-		q2.add(1);
-		for(int[] a : list) {
-			q.add(a);
-		}
-
+		boolean[] check = new boolean[n+1];
+		
+		q.offer(1);
+		check[1] = true;
+		
 		while(!q.isEmpty()) {
-			int[] arr = q.peek();
-			int key = q2.poll();
-			for(int i=0; i<node.length; i++) {
-				System.out.println(i);
-				if(arr[0] == n) {
-					answer[node[i][1] - 1] = key;
-					q.add(node[i][1]);
-					
-				}else if(arr[1] == n) {
-					answer[node[i][0] - 1] = key;
-					q.add(node[i][0]);
+			int v = q.poll();
+			for(int next : list.get(v)) {
+				if(!check[next]) {
+					check[next] = true;
+					answer[next] = v;
+					q.offer(next);
 				}
 			}
 		}
+		
+		StringBuilder sb = new StringBuilder();
+		for(int i=2; i<answer.length; i++) {
+			sb.append(answer[i]).append("\n");
+		}
+		
+		System.out.println(sb);
 	}
+	
+	
 }
