@@ -7,31 +7,22 @@ import java.io.InputStreamReader;
 public class Q1463 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int num = Integer.parseInt(br.readLine());
+		int x = Integer.parseUnsignedInt(br.readLine());
+		int[] dp = new int[x+1];
+		dp[1] = 0;
 		
-		int answer = solution(num);
-		System.out.println(answer);
-	}
-	
-	static int solution(int num) {
-		
-		int a = num;
-		while(true) {
-			
-			int b = 1;
-			
-			while(a != 0) {
-				b *= a%10;
-				a = a/10;
-				
+		for(int i=2; i<=x ; i++){
+			dp[i] = dp[i-1] + 1; //-1한것에 연산횟수 +!
+			if(i % 2 == 0){
+				dp[i] = Math.min(dp[i], dp[i/2] + 1); //2로 나눈것에 연산횟수 +1
 			}
-			
-			a = b;
-			if(b < 10) {
-				break;
+			if(i%3 == 0){
+				dp[i] = Math.min(dp[i], dp[i/3] + 1); //3으로 나눈것에 연산횟수 +1
 			}
 		}
-		
-		return a;
+
+		System.out.println(dp[x]);
 	}
+	
+	
 }

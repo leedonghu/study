@@ -14,6 +14,7 @@ public class Q10807 {
         for(int i=0; i<n; i++){
             arr[i] = Integer.parseInt(st.nextToken());
         }
+        
         int v = Integer.parseInt(br.readLine());
 
         int k = 0;
