@@ -13,15 +13,20 @@ public class ColaQuiz {
         int answer = 0;
 
         int cola = n;
-        while(cola > a){
+        while(cola >= a){
             int rest = cola % a;
-            int re = cola / a;
-            cola /= a;
-            answer += cola;
-            cola += rest;
+            int re = (cola / a) * b;
+            System.out.println("re " + re);
+            // cola += cola / a;
+            
+            answer += re;
+            // cola += re;
+            // cola += rest;
+            cola = rest + re;
+            System.out.println(cola);
         }
-        answer += cola / a;
-        System.out.println(cola);
+        // answer += cola % a;
+        // System.out.println(cola);
         return answer;
     }
 }
